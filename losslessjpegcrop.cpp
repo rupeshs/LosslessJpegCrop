@@ -64,7 +64,7 @@ bool LosslessJpegCrop::DoCrop(int nWidth,int nHeight,int nX,int nY)
     //adjust height
     nHeight+=nyRem;
 
-    cout<<nX<<" : "<<nY<<" xdelta"<<nxRem<<"ydelta "<< nyRem<<endl;
+    cout<<nX<<" : "<<nY<<" xdelta :"<<nxRem<<" ydelta :"<< nyRem<<endl;
     cout<<nWidth<<" : "<<nHeight<<endl;
 
     tjtransform oTjTransform;
