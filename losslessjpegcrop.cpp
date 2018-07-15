@@ -18,7 +18,8 @@
 
 LosslessJpegCrop::LosslessJpegCrop()
 {
-
+    m_jpegBuffer=NULL;
+    m_CroppedJpegBuf=NULL;
     m_nCroppedJpegBufSize=0;
     m_nJpegFileSize=0;
 }
