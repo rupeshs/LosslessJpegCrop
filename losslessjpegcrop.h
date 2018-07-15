@@ -23,6 +23,7 @@ public:
     inline string GetCropErrString(){return m_strError;}
     //Save cropped Jpeg Image
     bool SaveCroppedJpeg(string strPath);
+
  private :
     string m_strError;
     long m_nJpegFileSize;

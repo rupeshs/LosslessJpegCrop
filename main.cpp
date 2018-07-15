@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 
     LosslessJpegCrop oJpegCrop;
     oJpegCrop.LoadJpeg("F:\\Om\\Projects\\jpeg\\LosslessJpegCrop\\car.jpg");
-    bool bOk=oJpegCrop.DoCrop(300,160,512,768);
+    bool bOk=oJpegCrop.DoCrop(300,160,510,760);
     oJpegCrop.SaveCroppedJpeg("F:\\Om\\Projects\\jpeg\\LosslessJpegCrop\\crop.jpg");
     cout<<oJpegCrop.GetCropErrString();
     return a.exec();

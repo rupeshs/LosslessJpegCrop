@@ -47,6 +47,27 @@ bool LosslessJpegCrop::LoadJpeg(string strPath)
 }
 bool LosslessJpegCrop::DoCrop(int nWidth,int nHeight,int nX,int nY)
 {
+    /*lossless crop is restricted by the current JPEG format;
+    the upper left corner of the selected region must fall on
+    an iMCU( Minimum Coded Unit) boundary. If it doesn’t, then it is silently moved
+    up and/or left to the nearest iMCU boundary
+    (the lower right corner is unchanged.)
+    //nx and ny must be multiple of 16*/
+
+    int nxRem=nX%16;
+    nX-=nxRem;
+    //adjust width
+    nWidth+=nxRem;
+    //nWidth=AdjustMCUboundary(nX,nWidth);
+    //nHeight=AdjustMCUboundary(nY,nHeight);
+    int nyRem=nY%16;
+    nY-=nyRem;
+    //adjust height
+    nHeight+=nyRem;
+
+    cout<<nX<<" : "<<nY<<" xdelta"<<nxRem<<"ydelta "<< nyRem<<endl;
+    cout<<nWidth<<" : "<<nHeight<<endl;
+
     tjtransform oTjTransform;
     oTjTransform.r.h=nHeight;
     oTjTransform.r.w=nWidth;
@@ -56,7 +77,7 @@ bool LosslessJpegCrop::DoCrop(int nWidth,int nHeight,int nX,int nY)
     oTjTransform.customFilter=NULL;
     oTjTransform.data=NULL;
     oTjTransform.options=TJXOPT_CROP|TJXOPT_TRIM;
-   // 10 =>
+
     tjhandle oTurboJpeg = tjInitTransform();
     int nRes =tjTransform(oTurboJpeg,m_jpegBuffer,m_nJpegFileSize,
                 1,&m_CroppedJpegBuf,&m_nCroppedJpegBufSize,&oTjTransform,
