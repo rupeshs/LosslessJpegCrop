@@ -8,8 +8,7 @@ LosslessJpegCrop::LosslessJpegCrop()
 }
 LosslessJpegCrop::~LosslessJpegCrop()
 {
-
-    cout<<"dleted";
+    cout<<endl<<"clear"<<endl;
     if (m_jpegBuffer)
         delete[] m_jpegBuffer;
     if (m_CroppedJpegBuf)
