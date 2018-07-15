@@ -48,15 +48,15 @@ bool LosslessJpegCrop::LoadJpeg(string strPath)
 bool LosslessJpegCrop::DoCrop(int nWidth,int nHeight,int nX,int nY)
 {
     tjtransform oTjTransform;
-    oTjTransform.r.h=nWidth;
-    oTjTransform.r.w=nHeight;
+    oTjTransform.r.h=nHeight;
+    oTjTransform.r.w=nWidth;
     oTjTransform.r.x=nX;
     oTjTransform.r.y=nY;
     oTjTransform.op=TJXOP_NONE;
     oTjTransform.customFilter=NULL;
     oTjTransform.data=NULL;
-    oTjTransform.options=TJXOPT_CROP|TJXOPT_PERFECT;
-
+    oTjTransform.options=TJXOPT_CROP|TJXOPT_TRIM;
+   // 10 =>
     tjhandle oTurboJpeg = tjInitTransform();
     int nRes =tjTransform(oTurboJpeg,m_jpegBuffer,m_nJpegFileSize,
                 1,&m_CroppedJpegBuf,&m_nCroppedJpegBufSize,&oTjTransform,
