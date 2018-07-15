@@ -47,13 +47,11 @@ bool LosslessJpegCrop::LoadJpeg(string strPath)
 }
 bool LosslessJpegCrop::DoCrop(int nWidth,int nHeight,int nX,int nY)
 {
-
-
     tjtransform oTjTransform;
-    oTjTransform.r.h=100;
-    oTjTransform.r.w=400;
-    oTjTransform.r.x=512;
-    oTjTransform.r.y=768;
+    oTjTransform.r.h=nWidth;
+    oTjTransform.r.w=nHeight;
+    oTjTransform.r.x=nX;
+    oTjTransform.r.y=nY;
     oTjTransform.op=TJXOP_NONE;
     oTjTransform.customFilter=NULL;
     oTjTransform.data=NULL;
